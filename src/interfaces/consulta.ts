@@ -10,4 +10,3 @@ export interface Consulta {
     status: StatusConsulta; 
     observacoes?: string; 
 }
-
