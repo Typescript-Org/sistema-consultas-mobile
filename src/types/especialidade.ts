@@ -1,5 +1,5 @@
-// export type Especialidade = { 
-//     id: number;
-//     nome: string;
-//     descricao?: string; // propriedade opcional
-// }; 
+export type Especialidade = { 
+    id: number;
+    nome: string;
+    descricao?: string; 
+}; 
