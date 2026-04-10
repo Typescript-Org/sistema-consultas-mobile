@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { Especialidade } from "../types/especialidade";
+import { Paciente } from "../types/paciente";
+import { Medico } from "../interfaces/medico";
+import { Consulta } from "../interfaces/consulta";
+import { ConsultaCard } from "../components";
+import { styles } from "../styles/app.styles";
 
-import { ConsultaCard } from "./src/components";
-import { Consulta } from "./src/interfaces/consulta";
-import { Medico } from "./src/interfaces/medico";
-import { Especialidade } from "./src/types/especialidade";
-import { Paciente } from "./src/types/paciente";
-import { Home } from "./src/screens";
-
-export default function App() {
-  // Dados base (simulando o que tínhamos no backend)
+export default function Home() {
   const cardiologia: Especialidade = {
     id: 1,
     nome: "Cardiologia",
@@ -33,18 +31,16 @@ export default function App() {
     telefone: "(11) 98765-4321",
   };
 
-  // Estado da consulta
   const [consulta, setConsulta] = useState<Consulta>({
     id: 1,
     medico: medico1,
     paciente: paciente1,
-    data: new Date(2026, 2, 10), // 10/03/2026
+    data: new Date(2026, 2, 10),
     valor: 350,
     status: "agendada",
     observacoes: "Consulta de rotina",
   });
 
-  // Callbacks que o filho usa para comunicar a intenção de mudança ao pai
   function confirmarConsulta() {
     setConsulta({
       ...consulta,
@@ -62,15 +58,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Cabeçalho */}
         <View style={styles.header}>
           <Text style={styles.titulo}>Sistema de Consultas</Text>
           <Text style={styles.subtitulo}>Consulta #{consulta.id}</Text>
         </View>
-
-        {/* O estado vive no App e o card apenas recebe dados e callbacks */}
         <ConsultaCard
           consulta={consulta}
           onConfirmar={confirmarConsulta}
@@ -80,42 +72,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#79059C",
-  },
-  scrollContent: {
-    padding: 20,
-    paddingTop: 60,
-  },
-  header: {
-    alignItems: "center",
-    marginBottom: 24,
-  },
-  titulo: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#fff",
-    marginBottom: 8,
-  },
-  subtitulo: {
-    fontSize: 18,
-    color: "#fff",
-    opacity: 0.9,
-  },
-  rodape: {
-    marginTop: 24,
-    padding: 16,
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    borderRadius: 12,
-  },
-  rodapeTexto: {
-    fontSize: 12,
-    color: "#fff",
-    textAlign: "center",
-    lineHeight: 18,
-    marginBottom: 4,
-  },
-});
