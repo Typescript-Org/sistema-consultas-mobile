@@ -17,7 +17,7 @@ export default function Home() {
 
   const medico1: Medico = {
     id: 1,
-    nome: "Dr. Roberto Silva",
+    nome: "Luisa Mel",
     crm: "CRM12345",
     especialidade: cardiologia,
     ativo: true,
