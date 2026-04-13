@@ -63,6 +63,8 @@ export const styles = StyleSheet.create({
   },
   botaoContainer: {
     marginBottom: 12,
+    alignSelf: "flex-start",
+    width: 180,
   },
   mensagem: {
     backgroundColor: "#E8F5E9",
