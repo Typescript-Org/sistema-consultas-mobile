@@ -1,4 +1,5 @@
-import { StatusConsulta } from "../types/statusConsulta";
+import { StatusConsulta, Especialidade } from "../types";
+import { ClassificacaoPA } from "../types/pressaoArterial";
 
 export interface Consulta {
  id: number;
@@ -6,11 +7,17 @@ export interface Consulta {
  pacienteNome: string;
  medicoId: number;
  medicoNome: string;
- especialidade: string;
+ especialidade: Especialidade;
  usuarioId: number; // ID do usuário que agendou a consulta
  data: string;
  horario: string;
  status: StatusConsulta;
  observacoes?: string;
  valor?: number;
+ /** Consulta gerada por gravidade de pressão arterial */
+ prioridade?: boolean;
+ emergencia?: boolean;
+ pressaoSistolica?: number;
+ pressaoDiastolica?: number;
+ classificacaoPA?: ClassificacaoPA;
 }
